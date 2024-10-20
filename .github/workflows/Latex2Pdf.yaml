@@ -1,0 +1,35 @@
+name: Build LaTeX to PDF
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup TeX Live
+        uses: zauguin/install-texlive@v3
+        with:
+          packages: scheme-full
+
+      - name: Compile To PDF
+        run: |
+          pdflatex **/*.tex
+          pdflatex **/*.tex
+
+      - name: Commit and push PDF
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          git config --global user.name "Mrezadwiprasetiawan"
+          git config --global user.email "Mrezadwiprasetiawans@github.com"
+          git add *.pdf
+          git commit -m "Update PDF from LaTeX"
+          git push origin main
