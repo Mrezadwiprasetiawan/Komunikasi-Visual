@@ -1,14 +1,32 @@
 \documentclass[a4paper,12pt]{article}
 \usepackage[utf8]{inputenc}
+\usepackage{amsmath} %untuk simbol matematika dasar
 \usepackage{graphicx}
 \usepackage{geometry}
 \geometry{left=2.5cm, right=2.5cm, top=3cm, bottom=3cm}
-\usepackage{amsmath}
-\usepackage{amssymb}
 \usepackage[indonesian]{babel}
 \usepackage{xcolor} % untuk text color
+
+%definisi warna warna
+\definecolor{vermilion}{RGB}{227,66,52}
+\definecolor{amber}{RGB}{255,192,0}
+\definecolor{chartreuse}{RGB}{128,255,0}
+\definecolor{teal}{RGB}{0,128,128}
+\definecolor{violet}{RGB}{128,0,255}
+\definecolor{russet}{RGB}{128,70,27}
+\definecolor{slate}{RGB}{112,128,144}
+\definecolor{citron}{RGB}{221,208,106}
+\definecolor{scarlet}{RGB}{255,36,0}
+\definecolor{spring-green}{RGB}{0,255,128}
+\definecolor{azure}{RGB}{0,128,255}
+\definecolor{rose}{RGB}{255,0,128}
+
 \usepackage{hyperref} % Untuk hyperlink
-\usepackage{tocloft} % Untuk mengatur daftar isi dari suatu daftar(bukan table of content
+\usepackage{tocloft} % Untuk mengatur daftar isi dari suatu daftar (bukan table of content)
+
+\usepackage{titling}
+\usepackage{tikz} % untuk grafis dan pembuatan sampel warna
+\usetikzlibrary{calc}
 
 % Untuk mengubah format penomoran menjadi arab
 \renewcommand\thesection{\arabic{section}}
@@ -20,16 +38,40 @@
 \addcontentsline{toc}{section}{#1}
 }
 
-\usepackage{titling}
+\usepackage{xparse} % flexible new command serta logical IfValueTF
+
+\usepackage{mfirstuc} % kapital huruf pertama
+
+% Membuat textbox dengan background warna tertentu
+\NewDocumentCommand{\warnaln}{mo}{%
+  \tikz[baseline=-0.5\ht\strutbox]{%
+    \node[shape=rectangle, draw=black, fill=#1, minimum height=1.5em, inner sep=2pt]{%
+      \IfValueTF{#2}{\capitalisewords{#2}}{
+      \capitalisewords{#1}
+      }%
+    };
+  }%
+}
+
+\newcommand{\warnalnbl}[1]{
+  \tikz[baseline=-0.5\ht\strutbox]{
+    \node[shape=rectangle, draw=black, fill=black, minimum height=1.5em, inner sep= 2pt, text=white]{#1}
+  }
+}
 
 \title{
   \vspace{-3cm}
   \centering
   \vspace{1cm}
-  \textbf{Teori warna}\\
+  \textbf{Teori Warna}\\
   \large Mata Kuliah: \textbf{Komunikasi Visual}
 }
-\author{\textbf{M Reza Dwi Prasetiawan}}
+\author{$\begin{array}{c}
+  \textbf{M Reza Dwi Prasetiawan}\\
+  \textbf{Agnes Nabila Putri}\\
+  \textbf{Erni Rahmawati}\\
+\end{array}$
+}
 \date{\today}
 
 \begin{document}
@@ -38,7 +80,7 @@
   \maketitle
   \vfill
   \begin{center}
-    \includegraphics[width=\textwidth]{resources/logo.png}\\  % Center the logo and keep aspect ratio
+    \includegraphics[width=\textwidth]{resources/logo.png}\\
     \large
     Teknologi Informasi\\
     Institut Teknologi dan Sains\\
@@ -52,11 +94,138 @@
 % Insert table of contents
 \tableofcontents
 \newpage
+
+Dalam dunia desain grafis (\textit{graphic design}), warna menjadi komponen utama yang memegang peran penting dalam memikat target \textit{audience}, maupun untuk menggambarkan produk jika dalam desain \textit{branding}. Untuk memahami lebih jelasnya, di sini kami bagi menjadi 4 bab utama yaitu: Macam-macam warna, Psikologi warna, Skema warna, dan terakhir aplikasinya dalam dunia desain grafis.
+
+\section{Macam-macam Warna}
+
+Sebelum memahami bagaimana warna berpengaruh dalam psikologi, terlebih dahulu kita harus mengenal, apa saja sih jenis-jenis warna yang ada?
+
+Umumnya warna dibagi menjadi 4 bagian: warna primer, warna sekunder, dan warna tersier (\textit{AKA} warna menengah atau \textit{intermediate}) dan terakhir warna kuaterner(namun tidak dibahas untuk memudahkan).
+Warna primer adalah warna dasarnya, warna sekunder adalah gabungan dari dua warna primer dengan proporsi yang sama, sedangkan warna tersier adalah gabungan dari warna primer dan sekunder atau dua warna sekunder, yang terakhir warna kuaterner adalah kelompok warna dari perluasan warna tersier.
+
+Ada beberapa model warna yang memiliki warna dasar yang berbeda-beda, yaitu model warna RYB (\warnaln{red}\warnaln{yellow}\warnaln{blue}), RGB (\warnaln{red}\warnaln{green}\warnaln{blue}), CMYK (\warnaln{cyan}\warnaln{magenta}\warnaln{yellow}\warnalnbl{Key/Black}), dan masih banyak lagi.
+
+Terlepas dari model warna yang digunakan, ada juga warna komplementer dan warna netral yang disajikan setelah pembahasan model warna RYB, RGB, dan CMYK (model warna lain tidak akan dibahas di sini).
+
+\subsection{Model Warna RYB}
+\subsubsection{Warna Primer}
+Dalam model warna RYB (\warnaln{red}\warnaln{yellow}\warnaln{blue}), warna dasar yang digunakan adalah merah, kuning, dan biru. Hal ini dikarenakan sistem RYB biasa digunakan untuk cat atau pigmen warna. Ketika cat/pigmen warna dicampurkan, hasilnya adalah pengurangan panjang gelombang cahaya yang dipantulkan. Oleh karena itu, model warna RYB disebut juga model warna substraktif.
+
+\subsubsection{Warna Sekunder}
+Karena model warna RYB hanya memiliki 3 warna dasar, maka warna sekundernya juga hanya ada 3, yaitu:
+\begin{enumerate}
+  \item \warnaln{orange}[oranye] = \warnaln{red}[merah] + \warnaln{yellow}[kuning]
+  \item \warnaln{green}[hijau] = \warnaln{yellow}[kuning] + \warnaln{blue}[biru]
+  \item \warnaln{purple}[ungu] = \warnaln{red}[merah] + \warnaln{blue}[biru]
+\end{enumerate}
+
+\subsubsection{Warna Tersier}
+Seperti yang dijelaskan sebelumnya, warna tersier dihasilkan dari campuran dua warna primer-sekunder dan sekunder-sekunder.\\
+Berikut warna-warnanya:
+\begin{enumerate}
+  \item \warnaln{vermilion}=\warnaln{red}[merah]+\warnaln{orange}[oranye]
+  \item \warnaln{amber}=\warnaln{yellow}[kuning]+\warnaln{orange}[oranye]
+  \item \warnaln{chartreuse}=\warnaln{yellow}[kuning]+\warnaln{green}[hijau]
+  \item \warnaln{teal}=\warnaln{blue}[biru]+\warnaln{green}[hijau]
+  \item \warnaln{violet}=\warnaln{purple}[ungu]+\warnaln{blue}[biru]
+  \item \warnaln{magenta}=\warnaln{purple}[ungu]+\warnaln{red}[merah]
+  \item \warnaln{russet}=\warnaln{orange}[oranye]+\warnaln{purple}[ungu]
+  \item \warnaln{slate}=\warnaln{purple}[ungu]+\warnaln{green}[hijau]
+  \item \warnaln{citron}=\warnaln{green}[hijau]+\warnaln{orange}[oranye]
+\end{enumerate}
+\newpage
+\subsection{Model Warna RGB}
+\subsubsection{Warna primer}
+Model warna ini adalah model warna additif karena menggunakan panjang gelombang cahaya sebagai prediksi warnanya. Model ini digunakan di dunia digital, karena warna dasar sejati adalah ini. Mata manusia memiliki 3 tipe reseptor cahaya yang masing masing mengenali warna \warnaln{red}[merah], \warnaln{green}[hijau] dan \warnaln{blue}[biru]. Di sisi lain warna netral \warnaln{white}[putih] dihasilkan dari saturasi penuh ketiganya, sedangkan warna netral \warnalnbl{Hitam} adalah ketiadaan saturasi di ketiganya
+
+\subsubsection{Warna sekunder}
+Berikut warna-warna sekundernya:
+\begin{enumerate}
+  \item \warnaln{yellow}[kuning]=\warnaln{red}[merah]+\warnaln{green}[hijau]
+  \item \warnaln{cyan}=\warnaln{green}[hijau]+\warnaln{blue}[biru]
+  \item \warnaln{magenta}=\warnaln{red}[merah]+\warnaln{blue}[biru]
+\end{enumerate}
+
+Dalam bentuk saturasi RGB menjadi:
+\begin{enumerate}
+  \item \warnaln{yellow}[Kuning]=\warnaln{red}[100\%]\warnaln{green}[100\%]\warnaln{blue}[0\%]
+  \item \warnaln{cyan}=\warnaln{red}[0\%]\warnaln{green}[100\%]\warnaln{blue}[100\%]
+  \item \warnaln{magenta}=\warnaln{red}[100\%]\warnaln{green}[0\%]\warnaln{blue}[100\%]
+\end{enumerate}
+
+\subsubsection{Warna Tersier}
+Berikut warna-warna tersiernya langsung dalam bentuk saturasi RGB untuk memudahkan:
+\begin{enumerate}
+  \item \warnaln{orange}[oranye]=\warnaln{red}[100\%]\warnaln{green}[50\%]\warnaln{blue}[0\%]
+  \item \warnaln{chartreuse}=\warnaln{red}[50\%]\warnaln{green}[100\%]\warnaln{blue}[0\%]
+  \item \warnaln{spring-green}=\warnaln{red}[0\%]\warnaln{green}[100\%]\warnaln{blue}[50\%]
+  \item \warnaln{azure}=\warnaln{red}[0\%]\warnaln{green}[50\%]\warnaln{blue}[100\%]
+  \item \warnaln{violet}=\warnaln{red}[50\%]\warnaln{green}[0\%]\warnaln{blue}[100\%]
+  \item \warnaln{rose}=\warnaln{red}[100\%]\warnaln{green}[0\%]\warnaln{blue}[50\%]
+\end{enumerate}
+
+\subsection{Model Warna CMYK}
+\subsubsection{Warna primer}
+Model warna ini sama dengan model warna RYB yaitu model warna substraktif. Perbedaannya terletak pada warna dasarnya, yaitu \warnaln{cyan}, \warnaln{magenta}, \warnaln{yellow} dan \warnalnbl{Key/Black} sebagai pengatur kecerahannya. Model ini dibuat sebagai respon atas susah mencetak (\textit{print}) kertas sama seperti seperti \textit{input}nya(misalnya gambar atau dokumen seperti pdf). Model ini substraktif karena cara kerjanya adalah dengan mengurangi panjang gelombang cahaya putih(dari \textit{background}nya) yang dipantulkannya ke mata.
+\subsubsection{Warna sekunder}
+\subsubsection{Warna tersier}
+
+
+
+\subsection{Warna Komplementer}
+Warna komplementer bukanlah satu warna, melainkan dua warna yang saling berlawanan kontras. Berikut ciri-cirinya:
+\begin{enumerate}
+  \item Kontrasnya saling berlawanan
+  \item Terdiri dari satu warna hangat dan satu warna dingin
+  \item Ketika diletakkan berdampingan, menciptakan kontras yang kuat
+\end{enumerate}
+
+Berikut beberapa contoh warna komplementer:
+\begin{itemize}
+  \item \warnaln{red}[merah] \warnaln{green}[hijau]
+  \item \warnaln{blue}[biru] \warnaln{orange}[oranye]
+  \item \warnaln{yellow}[kuning] \warnaln{purple}[ungu]
+\end{itemize}
+
+\subsection{Warna Netral}
+Warna netral tidak memiliki nuansa tertentu dan biasa digunakan sebagai latar belakang (\textit{background}) dari suatu desain, atau justru digabungkan dengan warna lain untuk menyeimbangkan warna-warna lainnya. Ada empat warna netral utama yaitu \warnalnbl{Hitam}, \warnaln{white}[putih], \warnaln{brown}[coklat], dan \warnaln{gray}[abu-abu]. Warna netral biasanya dihasilkan dari dua warna yang saling berlawanan (warna komplementer).
+
 \section{Psikologi Warna}
+\subsection{Psikologi Warna Primer}
+\subsection{Psikologi Warna Sekunder}
+\subsection{Psikologi Warna Tersier}
+
 \section{Skema Warna}
+\subsection{Skema Warna Monokromatik}
+\subsection{Skema Warna Pelengkap}
+\subsection{Skema Warna Analog}
+\subsection{Skema Warna Netral}
+
 \section{Aplikasi Warna Dalam Desain}
+\newpage
+\section{Kesimpulan}
+Dalam dunia grafis warna memegang peran penting dalam psikologi \textit{audience} misalnya, warna merah yang mungkin menekankan keberanian dalam mengusung nama \textit{branding}, atau bisa juga untuk melambangkan rasa pedas pada suatu produk makanan. Meskipun begitu, ternyata warna tidak serta merta hadir dalam bentuk apa adanya melainkan hadir dalam bentuk \textit{kontinuitas} dari beberapa saturasi warna dasar yang memegang peran penting untuk menciptakan keberagaman warna.
+
+Kami menggunakan beberapa referensi dari internet sebagai acuan agar tidak adanya kesalahan dalam penyampaian, pembaca bisa memlihatnya di daftar pustaka. Sekian makalah kami, kurang lebih nya kami mohon maaf sebanyak sebanyaknya.
+\newpage
 \nonumsection{Daftar Pustaka}
 \begin{enumerate}
-  \item \textcolor{blue}{\href{%link}{%visibleText}}
+  \item \textcolor{blue}{\href{https://thecolorsmeaning.com/tertiary-colors/}{The Color Meaning - Tertiary Colors}}
+  \item \textcolor{blue}{\href{https://medium.com/a-history-of-color/neutral-colors-e394cfce452}{Medium - Neutral Colors by Erin S}}
+  \item \textcolor{blue}{\href{https://www.doss.co.id/news/definisi-jenis-dan-contoh-skema-warna-pada-imu-design}{www.doss.co.id - Definisi jenis dan contoh Skema Warna dalam ilmu desain}}
+  \item \textcolor{blue}{\href{https://en.m.wikipedia.org/wiki/Secondary_color}{Wikipedia - Secondary colors}}
+  \item \textcolor{blue}{\href{https://en.m.wikipedia.org/wiki/RGB_color_model}{Wikipedia - RGB color model}}
+  \item \textcolor{blue}{\href{https://en.m.wikipedia.org/wiki/CMYK_color_model}{Wikipedia - CMYK color model}}
+  \item \textcolor{blue}{\href{https://en.m.wikipedia.org/wiki/Vermilion}{Wikipedia - Vermilion}}
+  \item \textcolor{blue}{\href{https://en.m.wikipedia.org/wiki/Amber_(color)}{Wikipedia - Amber}}
+  \item \textcolor{blue}{\href{https://en.m.wikipedia.org/wiki/Chartreuse_(color)}{Wikipedia - Chartreuse}}
+  \item \textcolor{blue}{\href{https://en.m.wikipedia.org/wiki/Teal}{Wikipedia - Teal}}
+  \item \textcolor{blue}{\href{https://en.m.wikipedia.org/wiki/Russet_(color)}{Wikipedia - Russet}}
+  \item \textcolor{blue}{\href{https://en.m.wikipedia.org/wiki/Slate_gray}{Wikipedia - Slate gray}}
+  \item \textcolor{blue}{\href{https://en.m.wikipedia.org/wiki/Citron_(color)}{Wikipedia - Citron}}
+  \item \textcolor{blue}{\href{https://en.m.wikipedia.org/wiki/Violet_(color)}{Wikipedia - Violet}}
+  \item \textcolor{blue}{\href{https://en.m.wikipedia.org/wiki/Scarlet_(color)}{Wikipedia - Scarlet}}
+  
 \end{enumerate}
 \end{document}
