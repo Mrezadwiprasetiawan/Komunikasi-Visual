@@ -21,8 +21,10 @@ jobs:
 
       - name: Compile To PDF
         run: |
-          pdflatex **/*.tex
-          pdflatex **/*.tex
+          pdflatex **/Teori_warna.tex
+          pdflatex **/Teori_warna.tex
+          pdflatex **/surat_izin_orangtua_HAKRAB.tex
+          pdflatex **/surat_izin_orangtua_HAKRAB.tex
 
       - name: Commit and push PDF
         env:
